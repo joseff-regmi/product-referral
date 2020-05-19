@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} Products {% endblock title %}
+
+{% block body %}
+<br><br>
+<a href="{% url 'accounts:profile' %}">
+  <button class="btn btn-outline-primary" type="button">My Profile</button>
+  </a>
+  {% for product in products %}
+    <h1>product owner: {{ product.owner }} </h1>
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title"> Rs:{{ product.price}} <small class="text-muted">/ unit</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li> {{ product.description }}</li>
+            </ul>
+            <a href="{% url 'referrals:refer-product' product.id %}">
+              <button class="btn btn-primary" type="submit">Refer</button>
+            </a>
+            <br> share this product and get reward
+            {% csrf_token %}
+            </div>
+          </div>
+        </div>
+        <span><br> share this product and get reward </span>
+  {% endfor %}
+
+<!-- products ko chai create_product not of other apps -->
+
+ <!-- <form method="POST" action="">
+   {% csrf_token %}
+   <button class="btn btn-primary" type="submit">create</button>
+ </form> -->
+{% endblock body %}

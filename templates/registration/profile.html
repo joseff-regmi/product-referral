@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %} Profile {% endblock title %}
+
+{% block body %}
+<br><br>
+  <h1 color="primary"> Hi {{ user }}</h1><br>
+  <h3>create your product here</h3>
+  <a href="{% url 'products:create_product' %}">
+    <button class="btn btn-outline-primary" type="button">Create</button>
+  </a><br><br><br>
+  {% for refer in refers %}
+  <h1> {{ refer.product.name }}  </h1>
+  <p>Share URL:http://localhost:8000/share/{{refer.product.id}}?ref={{refer.ref_id}}</p>
+  {% endfor %}
+
+  {% for product in products %}
+
+<div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title"> Rs:{{ product.price}} <small class="text-muted">/ unit</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li> {{ product.description }}</li>
+        </ul>
+            <span><a href="{% url 'products:delete_product' product.id %}">
+            {% csrf_token %}
+          <button class="btn btn-outline-primary" type="button">Delete</button>
+        </a></span>
+        <span><a href="{% url 'products:edit_product' product.id %}">
+        {% csrf_token %}
+        <button class="btn btn-outline-primary" type="button">Edit</button>
+        </a></span>
+        <span><a href="{% url 'accounts:profile' %}">
+        {% csrf_token %}
+      <button class="btn btn-outline-primary" type="button">Share</button>
+    </a></span>
+    <span>   <a href="{% url 'referrals:refer-product' product.id %}">
+        <button class="btn btn-outline-primary" type="submit">Refer</button>
+      </a></span>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+
+
+{% endblock body %}

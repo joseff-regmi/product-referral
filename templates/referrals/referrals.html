@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block body %}
+
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% for refer in products %}
+    <h1> {{ refer.product.name}}  </h1>
+    {% endfor %}
+  </head>
+  <body>
+  </body>
+</html>
+{% endblock body %}

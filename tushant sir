@@ -1,0 +1,23 @@
+accept_invitation_page
+
+
+User has invited you to accept the invitation for this product.
+
+Do you want to accept it?
+
+Accept Cancel
+
+
+real
+
+Joseff has invited you to accept the invitation for MRF product.
+
+Do you want to accept it?
+
+Accept Cancel
+
+Username or email, Product name.
+
+refer = Refer.objects.get(ref_id=request.get.GET(ref_id, None))
+refer.inviter.email
+refer.product.name

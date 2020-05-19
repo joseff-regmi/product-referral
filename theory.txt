@@ -1,0 +1,19 @@
+entered into projects folder
+
+created new directory so that we can have pipfile to have a new virtual environment
+pipevn install django - created new virtual environment if not exist and installed django package as well
+django-admin.py startproject project_name
+python manage.py runserver
+
+
+Projects vs App
+
+project - combination of App + configuration
+app - functionality, feature,
+    - user/accounts, products, refer, order, checkout, discount
+
+
+flow
+MVC/MVT
+
+browser/client -> abc.com or abc.com/about-us -> urls.py -> views.py -> models.py -> views.py -> template -> browser

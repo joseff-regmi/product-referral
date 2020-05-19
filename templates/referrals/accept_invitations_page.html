@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<br><br>
+{{ inviter }} has invited you to accept the invitation on {{product}}
+
+Do you want to accept?
+
+<a href="{% url 'accounts:signup' %}">
+<button>Join</button>
+</a>
+
+{% endblock body %}

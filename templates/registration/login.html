@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+{% load widget_tweaks %}
+<!--{% load static %}
+{% load i18n %}
+{% block css %}
+  <link  rel="stylesheet" type="text/css" href="{%static 'account/login.css'%}">
+{% endblock css%}
+-->
+{% block body %}
+<br><br><br>
+<main>
+  <div class="container1">
+    <section class="mb-4">
+      <div class="row">
+        <div class='col-6 offset-3'>
+          <h2>{% trans "LOGIN" %}</h2>
+          <form method="post">
+            {% csrf_token %}
+
+            {% block title%}
+            login
+            {% endblock%}
+
+            {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+            {% endfor %}
+
+            {% block search %}
+            {% endblock %}
+            {% block home %}
+            {% endblock %}
+            {% for field in form.visible_fields %}
+            <div class="form-group">
+              <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+              {{ field|add_class:'form-control' }}
+              {% for error in field.errors %}
+              <span class="help-block">{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% endfor %}
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </section>
+    <a  href="{% url 'accounts:signup' %}">signup for free</a>
+  </div>
+</main>
+{% endblock body %}
