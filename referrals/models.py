@@ -10,18 +10,18 @@ User = settings.AUTH_USER_MODEL
 '''
 
 
-# class Refer(models.Model):
+class Refer(models.Model):
 
-#    referrer = models.ForeignKey(User, related_name='referrer', on_delete=models.CASCADE)
-#    referred = models.ForeignKey(User, related_name='referral', on_delete=models.CASCADE)
-#    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+   referrer = models.ForeignKey(User, related_name='referrer', on_delete=models.CASCADE)
+   referred = models.ForeignKey(User, related_name='referral', on_delete=models.CASCADE)
+   product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
-#    class Meta:
-#        verbose_name = "Refer"
-#        verbose_name_plural = "Refers"
+   class Meta:
+       verbose_name = "Refer"
+       verbose_name_plural = "Refers"
 
-#    def __str__(self):
-#        return str(self.referrer.id)
+   def __str__(self):
+       return str(self.referrer.id)
 
 
 class Refer(models.Model):
